@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #666;
+}
+
+.stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.stat {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.stat strong {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.stat span {
+    color: #777;
+}
+
+.add-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.add-form input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 18px;
+    cursor: pointer;
+}
+
+.add-form button {
+    background: #222;
+    color: white;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task {
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.task-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.check {
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.completed span {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.actions a {
+    text-decoration: none;
+}
+
+.delete {
+    color: #d33;
+}
+
+summary {
+    cursor: pointer;
+    color: #555;
+}
+
+details form {
+    margin-top: 10px;
+}
+
+details input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+details button {
+    background: #222;
+    color: white;
+}
+
+.empty {
+    text-align: center;
+    background: white;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.empty p {
+    color: #777;
+    margin-top: 8px;
+}
+
+.clear-container {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.clear-container a {
+    color: #d33;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 95%;
+        margin: 25px auto;
+    }
+
+    .stats {
+        flex-direction: column;
+    }
+
+    .add-form {
+        flex-direction: column;
+    }
+
+    .task {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}

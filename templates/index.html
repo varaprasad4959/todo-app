@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My To-Do App</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>My To-Do App</h1>
+        <p>Organize your day, one task at a time.</p>
+    </header>
+
+    <section class="stats">
+
+        <div class="stat">
+            <strong>{{ total }}</strong>
+            <span>Total</span>
+        </div>
+
+        <div class="stat">
+            <strong>{{ pending }}</strong>
+            <span>Pending</span>
+        </div>
+
+        <div class="stat">
+            <strong>{{ completed }}</strong>
+            <span>Completed</span>
+        </div>
+
+    </section>
+
+    <!-- Add Task -->
+    <form class="add-form" method="POST">
+
+        <input
+            type="text"
+            name="title"
+            placeholder="What needs to be done?"
+            required
+        >
+
+        <button type="submit">
+            Add Task
+        </button>
+
+    </form>
+
+    <!-- Task List -->
+    <section class="tasks">
+
+        {% if tasks %}
+
+            {% for task in tasks %}
+
+            <div class="task {% if task['completed'] %}completed{% endif %}">
+
+                <div class="task-info">
+
+                    <a
+                        class="check"
+                        href="{{ url_for('complete_task', task_id=task['id']) }}"
+                    >
+                        {% if task['completed'] %}
+                            ✓
+                        {% else %}
+                            ○
+                        {% endif %}
+                    </a>
+
+                    <span>{{ task['title'] }}</span>
+
+                </div>
+
+                <div class="actions">
+
+                    <!-- Edit -->
+                    <details>
+
+                        <summary>Edit</summary>
+
+                        <form
+                            method="POST"
+                            action="{{ url_for('edit_task', task_id=task['id']) }}"
+                        >
+
+                            <input
+                                type="text"
+                                name="title"
+                                value="{{ task['title'] }}"
+                                required
+                            >
+
+                            <button type="submit">
+                                Save
+                            </button>
+
+                        </form>
+
+                    </details>
+
+                    <!-- Delete -->
+                    <a
+                        class="delete"
+                        href="{{ url_for('delete_task', task_id=task['id']) }}"
+                    >
+                        Delete
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty">
+                <h2>No tasks yet</h2>
+                <p>Add your first task above.</p>
+            </div>
+
+        {% endif %}
+
+    </section>
+
+    <!-- Clear Completed -->
+    {% if completed > 0 %}
+
+    <div class="clear-container">
+
+        <a href="{{ url_for('clear_completed') }}">
+            Clear Completed Tasks
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
